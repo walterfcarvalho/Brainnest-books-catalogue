@@ -32,15 +32,6 @@ const check_input = (input, span, regex, errorMsg) => {
   return true;
 }
 
-const check_title = (input, span, regex, errorMsg) => {
-  if (!regex.test(input.value)) {
-    change_input_display(input, span, errorMsg);
-    return false;
-  }
-  change_input_display(input, span, "");
-  return true;
-}
-
 const cancelInsert = (event) => {
   event.preventDefault();
   
@@ -65,8 +56,6 @@ const cancelInsert = (event) => {
   filIsRead.classList.remove("input_valid", "input_invalid") 
 }
 
-btnCancel.addEventListener ('click', cancelInsert );
-
 btAdd.addEventListener ('click', (event) => {
   event.preventDefault();
   myForm.classList.remove("unroll");
@@ -74,37 +63,48 @@ btAdd.addEventListener ('click', (event) => {
   myForm.style.display = "flex";
 })
 
-
-filTitle.addEventListener('blur', () => {
+const check_title = () => {
   return check_input (
     filTitle,
     spanTitle,
     /^(?=.{3,50}$)^[a-zA-Z0-9.!#$%&'*+/=?^_ `{|}~-]*$/,
     'Inform a title with at least 2 chars '
   );
-});
+}
 
-filAuthor.addEventListener('blur', () => {
+const check_author = () => {
   return check_input (
     filAuthor,
     spanAuthor,
     /^(?=.{3,50}$)^[a-zA-Z0-9.!#$%&'*+/=?^_ `{|}~-]*$/,
     'Inform a author with at least 2 chars '
-
   );
-});
+}
 
-filPages.addEventListener('blur', () => {
+const check_pages = () => {
   return check_input (
     filPages,
     spanPages,
     /^^[1-9][0-9]*$/,
     'Inform amout of pages bigger than 0.'
   );
-});
+}
+
+filPages.addEventListener('blur', check_pages );
+filTitle.addEventListener('blur', check_title );
+btnCancel.addEventListener ('click', cancelInsert );
+filAuthor.addEventListener('blur', check_author );
 
 myForm.addEventListener('submit', (event) => {
   event.preventDefault();
+
+  let ok = true;
+
+  if ( !check_author() ) ok = false;
+  if ( !check_title() )  ok = false;
+  if ( !check_pages() ) ok = false;
+
+  if ( !ok ) return;
 
   let id = new Date().getTime();
 

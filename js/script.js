@@ -28,7 +28,6 @@ const removeFromList = (index) => {
 }
 
 const mountCard = (data, index ) => {
-  
   const main = document.getElementById("main");
   let divCard = document.createElement("div");
   let idx = index ? index: data.id;
@@ -96,12 +95,12 @@ const mountCard = (data, index ) => {
 }
 
 const showList = () => {
-  library
-  .getBooks()?.forEach((e) => mountCard(e));
+  library.getBooks()?.forEach((e) => mountCard(e));
 }
 
 showList();
 
 export {
-  library, mountCard
+  library, 
+  mountCard
 }
