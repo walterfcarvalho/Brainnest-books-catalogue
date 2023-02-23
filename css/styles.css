@@ -1,0 +1,91 @@
+@import url(./form.css);
+
+:root {
+  --color-black: #333;
+  --color-white: #ffffff;
+  --color-gray: #E9ECEF;
+}
+
+body {
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans";
+  color: var(--color-black);
+  scroll-behavior: smooth;
+}
+
+nav {
+  height: 8vh;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: var(--color-black);
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background-color: var(--color-black);
+  bottom: 0px;
+  height: 1.5em;
+}
+
+i {
+  font-size: 16px;
+  color: var(--color-black);
+}
+
+nav h1 { 
+  color: var(--color-white);
+  text-align: center;
+  padding: .5em 0;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+nav button, nav img {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+}
+
+nav > button {
+  border: 50px;
+  padding: .4em 3em;
+  border-radius: 0px;
+}
+
+main {
+  justify-content: space-around;
+  display: flex;
+  margin-top: 8.5vh;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 220px;
+  margin: 1em 1em;
+  padding: 1em;
+  color: var(--color-black);
+  border: 1px solid;
+  box-shadow: 1px 2px var(--color-black);
+}
+
+.card button {
+  font-size: 14px;
+  margin: 0;
+  width: 45%;
+  padding: .5em;
+  margin: .5em;
+}
+
+strong {
+  font-weight: 500;
+}
+
+.card div {
+  display: flex;
+  justify-content: space-around;
+}
