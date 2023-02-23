@@ -1,3 +1,4 @@
+import { library, mountCard } from './script.js';
 const myForm = document.getElementById("myForm");
 const filTitle = document.getElementById("title");
 const spanTitle = document.getElementById("title-error");
@@ -8,7 +9,6 @@ const spanPages = document.getElementById("pages-error");
 const btAdd = document.getElementById("form_show");
 const btnCancel = document.getElementById("form_cancel");
 const filIsRead = document.getElementById("read");
-
 
 const change_input_display = (input, span, errorMsg) => {
   if (errorMsg) {
@@ -62,9 +62,7 @@ const cancelInsert = (event) => {
   spanAuthor.innerText = "";
   spanTitle.innerText = "";
   spanPages.innerText = "";
-  
-  filIsRead.classList.remove("input_valid", "input_invalid")
-  
+  filIsRead.classList.remove("input_valid", "input_invalid") 
 }
 
 btnCancel.addEventListener ('click', cancelInsert );
@@ -81,8 +79,8 @@ filTitle.addEventListener('blur', () => {
   return check_input (
     filTitle,
     spanTitle,
-    /^(?=.{3,50}$)^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]*$/,
-    'Inform a title with at least 2 non numeric chars '
+    /^(?=.{3,50}$)^[a-zA-Z0-9.!#$%&'*+/=?^_ `{|}~-]*$/,
+    'Inform a title with at least 2 chars '
   );
 });
 
@@ -90,8 +88,8 @@ filAuthor.addEventListener('blur', () => {
   return check_input (
     filAuthor,
     spanAuthor,
-    /^(?=.{3,50}$)^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]*$/,
-    'Inform a author with at least 2 non numeric chars '
+    /^(?=.{3,50}$)^[a-zA-Z0-9.!#$%&'*+/=?^_ `{|}~-]*$/,
+    'Inform a author with at least 2 chars '
 
   );
 });
@@ -101,11 +99,22 @@ filPages.addEventListener('blur', () => {
     filPages,
     spanPages,
     /^^[1-9][0-9]*$/,
-    'Inform amout of pages.'
+    'Inform amout of pages bigger than 0.'
   );
 });
 
 myForm.addEventListener('submit', (event) => {
   event.preventDefault();
 
+  let id = new Date().getTime();
+
+  let formData = Object.fromEntries(new FormData(myForm));
+
+  library.add({
+    ...formData, 
+    id
+  });
+
+  mountCard(formData, id );
+  cancelInsert(event);
 })

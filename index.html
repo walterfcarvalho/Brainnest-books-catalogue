@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0 initial-scale=1, maximum-scale=1, user-scalable=no"">
+
   <script type="module" src="./js/script.js" defer></script>
   <script type="module" src="./js/form.js" defer></script>
 
@@ -13,12 +14,11 @@
   <link rel="stylesheet" href="./css/reset.css" />
   <link rel="stylesheet" href="./css/styles.css" />
 
-  <title>A library</title>
+  <title>My b/w book list</title>
 </head>
 <body>
   <header>
     <nav>
-
       <h1>Library records</h1>
   
       <button id="form_show" >
@@ -28,37 +28,14 @@
   </header>
 
   <main id="main">
-
-    <!-- <div class="card">
-      <span><Strong>Title: </Strong>book's title</span>
-      <hr>
-      <span>
-        <strong>Author: </strong>this. author</span>
-      <hr>
-      <span><strong>Pages: </strong>999</span>
-      <hr>
-      <span><strong>Read: </strong>Yes ! </span>
-      <hr>
-      <div>
-          <button>
-            <i class="fa-regular fa-pen-to-square"></i>
-            Edit
-          </button>
-          <button>
-            <i class="fas fa-trash-alt"></i>            
-            Delete
-          </button>
-      </div>
-    </div> -->
-
   </main>
 
   <form id="myForm" class="myForm">
-      <span>Add a Book</span>
-
+      <span class="formTitle">Add a Book</span>
       <label for="title">Title</label>
       <input  
         id="title"
+        name="title"
         type="text"
         placeholder="Type the title"
       />
@@ -66,6 +43,7 @@
 
       <label for="author">Author</label>
       <input  
+        name="author"
         id="author"
         type="text"
         placeholder="Type the author"
@@ -73,6 +51,7 @@
       <span id="author-error"></span>
       <label for="pages">Number of pages</label>
       <input  
+        name="pages"
         id="pages"
         type="number"
         placeholder="Number of pages"
@@ -81,24 +60,43 @@
       <span id="pages-error"></span>
 
       <label for="read">Read ?</label>
-      <select id="read">
+      <select
+        name="isRead"
+        id="read"
+      >
         <option value="true">Yes 😸</option>
-        <option value="false">No 😖</option>
+        <option value="false">No 😿</option>
       </select>
 
-
-    <div class="book-btn">
+      <div class="book-btn">
       <input id="form_cancel" type="submit" value="Cancel" >
       <input type="submit" value="Ok" >
     </div>
-
-
   </form>
 
 
 
   <footer>
-    xxxxxx
+    <a
+      href ="https://github.com/walterfcarvalho/brainnest-Javascrip-classes" 
+      target="_blank" 
+    >
+      <i class="fa-brands fa-github" alt="link to source code"></i>
+    </a>   
+    
+    <a
+      href ="https://twitter.com/walterfcarvalho" 
+      target="_blank" 
+    >
+      <i class="fa-brands fa-twitter" alt="link to my profile on twitter"></i>
+    </a>
+    <a
+      href ="https://linkedin.com/in/walterfcarvalho" 
+      target="_blank" 
+    >
+      <i class="fa-brands fa-linkedin"></i>
+    </a>
+
   </footer>
 </body>
 </html>

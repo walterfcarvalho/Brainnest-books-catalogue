@@ -22,15 +22,35 @@ nav {
 }
 
 footer {
+  color: var(--color-white);
   position: fixed;
   left: 0;
-  bottom: 0;
   width: 100%;
   text-align: center;
   background-color: var(--color-black);
   bottom: 0px;
   height: 1.5em;
+  padding: .5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+footer i { 
+  color: var(--color-white);
+  font-size: 20px;
+  padding: 1em;
+}
+
+.card i {
+  margin-right: 1em;
+}
+
+.card:hover {
+  background-color: #E9ECEF;
+}
+
+
 
 i {
   font-size: 16px;
@@ -60,8 +80,9 @@ nav > button {
 main {
   justify-content: space-around;
   display: flex;
-  margin-top: 8.5vh;
   flex-wrap: wrap;
+  margin-top: 8.5vh;
+  margin-bottom: 1.8em;
 }
 
 .card {
@@ -88,4 +109,13 @@ strong {
 .card div {
   display: flex;
   justify-content: space-around;
+}
+
+@media screen and (max-width:450px ) {
+  nav > button {
+    border: 50px;
+    padding: .4em 2em;
+    border-radius: 0px;
+  }
+  
 }
