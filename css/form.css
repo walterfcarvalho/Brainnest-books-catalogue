@@ -42,11 +42,12 @@
   100% {width: 0px;}  
 }
 
-span {
+.label {
   display: block;
   font-size: 18px;
   text-align: center;
-  margin-bottom: 1em;
+  /* margin-bottom: 1em; */
+  padding: 1em;
 }
 
 input,
@@ -90,9 +91,9 @@ input::placeholder {
   border: 2px solid green;
 }
 
-input + span {
+.error_field {
   text-align: left;
-  font-size: .7em;
+  font-size: .5em;
   color:red;
 }
 

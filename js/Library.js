@@ -19,6 +19,14 @@ export default class Library {
   
   getBooks = () => this.books;
   persist = () => localStorage.setItem(key, JSON.stringify(this.books));
+  getTotalRead = () => {
+    let iniValue = 0;
+    return this.getBooks().reduce( 
+      (acc, b ) =>  acc + (b.isRead ? 1: 0)
+      , iniValue
+    )
+  } 
+
 
   add = (param_book) => {
     let book = new Book(param_book);

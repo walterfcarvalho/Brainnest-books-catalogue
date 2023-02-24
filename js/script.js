@@ -2,6 +2,9 @@ import Library from './Library.js';
 
 const library = new Library();
 
+const no_books_msg = document.getElementById("no_books_msg");
+
+
 const updateBook = (index) => {
   if (document.getElementById("myForm").style.display == "flex") {
     return;
@@ -14,6 +17,7 @@ const updateBook = (index) => {
 
   document.getElementById(`edit#${index}`).innerText =
   library.books[idx].isRead ? `Read: Yes 😸` : `Read: No 😿`;
+  count_Books();
 }
 
 const removeFromList = (index) => {
@@ -25,6 +29,8 @@ const removeFromList = (index) => {
   library.persist();
 
   document.getElementById(`delete#${index}`).remove();
+  set_no_books_msg();
+  count_Books();
 }
 
 const mountCard = (data, index ) => {
@@ -94,13 +100,33 @@ const mountCard = (data, index ) => {
   main.appendChild(divCard);
 }
 
+const set_no_books_msg = () => {
+  no_books_msg.style.display = (library.books.length == 0) ? "inline" : "none";
+}
+
+const count_Books = () => {
+  document
+  .getElementById('books_total')
+  .innerText = `Books total: ${library.books.length}`
+
+  document
+  .getElementById('books_read')
+  .innerText = `Books Read: ${library.getTotalRead()}`
+}
+
 const showList = () => {
   library.getBooks()?.forEach((e) => mountCard(e));
+
+  set_no_books_msg();  
+  count_Books();
+
 }
 
 showList();
 
 export {
   library, 
-  mountCard
+  mountCard,
+  set_no_books_msg,
+  count_Books
 }

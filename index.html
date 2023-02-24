@@ -19,6 +19,11 @@
 <body>
   <header>
     <nav>
+      <div>
+        <span id="books_total">Books: 111</span>
+        <span id="books_read">TotalRead: 50%</span>
+      </div>
+      
       <h1>Library records</h1>
   
       <button id="form_show" >
@@ -26,8 +31,11 @@
       </button>
     </nav>
   </header>
-
+  
   <main id="main">
+    <span id="no_books_msg">
+      There is no books registred yet...
+    </span>
   </main>
 
   <form id="myForm" class="myForm">
@@ -39,7 +47,7 @@
         type="text"
         placeholder="Type the title"
       />
-      <span id="title-error"></span>
+      <span class="error_field" id="title-error"></span>
 
       <label for="author">Author</label>
       <input  
@@ -48,7 +56,7 @@
         type="text"
         placeholder="Type the author"
       />
-      <span id="author-error"></span>
+      <span class="error_field" id="author-error"></span>
       <label for="pages">Number of pages</label>
       <input  
         name="pages"
@@ -57,7 +65,7 @@
         placeholder="Number of pages"
         value="0"
       />
-      <span id="pages-error"></span>
+      <span class="error_field" id="pages-error"></span>
 
       <label for="read">Read ?</label>
       <select

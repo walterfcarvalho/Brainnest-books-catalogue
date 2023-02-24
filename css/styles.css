@@ -13,12 +13,16 @@ body {
 }
 
 nav {
-  height: 8vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 5vh;
   overflow: hidden;
   position: fixed;
   top: 0;
   width: 100%;
   background-color: var(--color-black);
+  padding: .5em 0em;
 }
 
 footer {
@@ -58,19 +62,27 @@ i {
 nav h1 { 
   color: var(--color-white);
   text-align: center;
-  padding: .5em 0;
   font-size: 24px;
   font-weight: 500;
 }
 
-nav button, nav img {
-  position: absolute;
-  top: 1em;
-  right: 1em;
+nav div {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  /* justify-items: ; */
+  font-size: 12px;
+  color:var(--color-white);
 }
 
+
+/* nav button, nav img {
+  top: 1em;
+  right: 1em;
+} */
+
 nav > button {
-  border: 50px;
+  border: 0;
   padding: .4em 3em;
   border-radius: 0px;
 }
@@ -107,6 +119,28 @@ strong {
 .card div {
   display: flex;
   justify-content: space-around;
+}
+
+#no_books_msg {
+  overflow: hidden;
+  padding: .10em;
+  border-right: .45em solid var(--color-black);
+  white-space: nowrap;
+  margin: 1em 1em;
+  letter-spacing: .10em; 
+  animation: 
+    typing 5s steps(40, end),
+    cursor .75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 50% }
+}
+
+@keyframes cursor {
+  from, to { border-color: transparent }
+  50% { border-color: var(--color-black); }
 }
 
 @media screen and (max-width:450px ) {

@@ -1,4 +1,5 @@
-import { library, mountCard } from './script.js';
+import * as script from './script.js';
+
 const myForm = document.getElementById("myForm");
 const filTitle = document.getElementById("title");
 const spanTitle = document.getElementById("title-error");
@@ -32,6 +33,7 @@ const check_input = (input, span, regex, errorMsg) => {
   return true;
 }
 
+
 const cancelInsert = (event) => {
   event.preventDefault();
   
@@ -54,6 +56,7 @@ const cancelInsert = (event) => {
   spanTitle.innerText = "";
   spanPages.innerText = "";
   filIsRead.classList.remove("input_valid", "input_invalid") 
+
 }
 
 btAdd.addEventListener ('click', (event) => {
@@ -86,7 +89,7 @@ const check_pages = () => {
     filPages,
     spanPages,
     /^^[1-9][0-9]*$/,
-    'Inform amout of pages bigger than 0.'
+    'You know, amout of pages uses to be bigger than 0.'
   );
 }
 
@@ -103,18 +106,18 @@ myForm.addEventListener('submit', (event) => {
   if ( !check_author() ) ok = false;
   if ( !check_title() )  ok = false;
   if ( !check_pages() ) ok = false;
-
   if ( !ok ) return;
 
   let id = new Date().getTime();
-
   let formData = Object.fromEntries(new FormData(myForm));
 
-  library.add({
+  script.library.add({
     ...formData, 
     id
   });
-
-  mountCard(formData, id );
+  
+  script.mountCard(formData, id );
   cancelInsert(event);
+  script.set_no_books_msg();
+  script.count_Books();
 })
