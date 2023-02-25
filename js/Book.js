@@ -1,4 +1,10 @@
 export default class Book {  
+  id = "";
+  title = "";
+  pages = 0;
+  author = ""
+  isRead = false;
+
   constructor (book) {
     this.id = book.id;
     this.title = book.title;
@@ -15,5 +21,7 @@ export default class Book {
   setPages = (pages) => this.pages = pages;
   getAuthor = () => this.author;
   setAuthor = (author) => this.author = author;
+  getIsRead = () => this.isRead;
+  setIsRead = (isRead) => this.isRead;
   toogleRead = () => this.isRead = !this.isRead;
 } 

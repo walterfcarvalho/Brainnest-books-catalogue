@@ -1,4 +1,5 @@
 import * as script from './script.js';
+import Book from './Book.js'
 
 const myForm = document.getElementById("myForm");
 const filTitle = document.getElementById("title");
@@ -25,7 +26,8 @@ const change_input_display = (input, span, errorMsg) => {
 }
 
 const check_input = (input, span, regex, errorMsg) => {
-  if (!regex.test(input.value)) {
+  //if (!regex.test(input.value)) {
+  if (!regex) {
     change_input_display(input, span, errorMsg);
     return false;
   }
@@ -64,13 +66,15 @@ btAdd.addEventListener ('click', (event) => {
   myForm.classList.remove("unroll");
   myForm.classList.add("roll");
   myForm.style.display = "flex";
+  document.getElementById("title").focus();
 })
 
 const check_title = () => {
   return check_input (
     filTitle,
     spanTitle,
-    /^(?=.{3,50}$)^[a-zA-Z0-9.!#$%&'*+/=?^_ `{|}~-]*$/,
+    filTitle.value.length >=2,
+    ///^(?=.{3,50}$)^[a-zA-Z0-9.!#$%&'*+/=?^_ `{|}~-]*$/,
     'Inform a title with at least 2 chars '
   );
 }
@@ -79,7 +83,8 @@ const check_author = () => {
   return check_input (
     filAuthor,
     spanAuthor,
-    /^(?=.{3,50}$)^[a-zA-Z0-9.!#$%&'*+/=?^_ `{|}~-]*$/,
+    filAuthor.value.length >=2,
+    // /^(?=.{3,50}$)^[a-zA-Z0-9.!#$%&'*+/=?^_ `{|}~-]*$/,
     'Inform a author with at least 2 chars '
   );
 }
@@ -88,8 +93,9 @@ const check_pages = () => {
   return check_input (
     filPages,
     spanPages,
-    /^^[1-9][0-9]*$/,
-    'You know, amout of pages uses to be bigger than 0.'
+    filPages.value > 0,
+    // /^^[1-9][0-9]*$/,
+    'You know, amount of pages uses to be bigger than 0.'
   );
 }
 
@@ -110,13 +116,14 @@ myForm.addEventListener('submit', (event) => {
 
   let id = new Date().getTime();
   let formData = Object.fromEntries(new FormData(myForm));
-
-  script.library.add({
+  let newBook =  new Book({
     ...formData, 
     id
   });
+
+  script.library.add( newBook );
   
-  script.mountCard(formData, id );
+  script.mountCard( newBook, id );
   cancelInsert(event);
   script.set_no_books_msg();
   script.count_Books();

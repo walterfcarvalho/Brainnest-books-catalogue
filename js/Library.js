@@ -1,4 +1,3 @@
-// const defaultLibrary = `[{"title":"bo!!","pages":10,"author":"Tolkien","isRead":false},{"title":"book2","pages":20,"author":"Douglas Adams","isRead":false}]`;
 const defaultLibrary = undefined;
 
 import Book from './Book.js'
@@ -6,7 +5,7 @@ import Book from './Book.js'
 const key = "bookList";
 
 export default class Library {
-  
+  books = [];
   constructor () {
     this.books = this.loadBooks();
   }
@@ -14,11 +13,16 @@ export default class Library {
   loadBooks = () => {
     let bookObj = JSON.parse( defaultLibrary || localStorage.getItem(key));
 
-    return bookObj ? bookObj.map( b => new Book(b)): [];
+    return bookObj ? bookObj.map( b => {
+      return new Book(b)
+    }): [];
   }
   
   getBooks = () => this.books;
-  persist = () => localStorage.setItem(key, JSON.stringify(this.books));
+  setBooks = (books) => this.books = books; 
+  persist = () => {
+    localStorage.setItem(key, JSON.stringify(this.getBooks()));
+  }
   getTotalRead = () => {
     let iniValue = 0;
     return this.getBooks().reduce( 
@@ -29,8 +33,9 @@ export default class Library {
 
 
   add = (param_book) => {
-    let book = new Book(param_book);
-    this.books.push(book);
+    // let book = new Book(param_book);
+    this.setBooks( [...this.getBooks(), param_book]);
+    // this.books.push(book);
     this.persist();
   }
 

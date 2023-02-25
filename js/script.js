@@ -10,13 +10,13 @@ const updateBook = (index) => {
     return;
   }
 
-  let idx = library.books.findIndex( book => book.getId() == index);
+  let idx = library.getBooks().findIndex( book => book.getId() == index);
 
-  library.books[idx].toogleRead();
+  library.getBooks()[idx].toogleRead();
   library.persist();
 
   document.getElementById(`edit#${index}`).innerText =
-  library.books[idx].isRead ? `Read: Yes 😸` : `Read: No 😿`;
+  library.getBooks()[idx].isRead ? `Read: Yes 😸` : `Read: No 😿`;
   count_Books();
 }
 
@@ -36,7 +36,7 @@ const removeFromList = (index) => {
 const mountCard = (data, index ) => {
   const main = document.getElementById("main");
   let divCard = document.createElement("div");
-  let idx = index ? index: data.id;
+  let idx = index ? index: data.getId();
 
   divCard.id = `delete#${idx}`; 
 
@@ -46,7 +46,7 @@ const mountCard = (data, index ) => {
 
   let spanData = document.createElement("span");
   spanData.appendChild(fieldName);
-  spanData.append(data.title);
+  spanData.append(data.getTitle());
   divCard.appendChild(spanData);
   divCard.appendChild(document.createElement("hr"));
 
@@ -54,7 +54,7 @@ const mountCard = (data, index ) => {
   fieldName.innerText = "Author: ";
   spanData = document.createElement("span");
   spanData.appendChild(fieldName);
-  spanData.append(data.author);
+  spanData.append(data.getAuthor());
   divCard.appendChild(spanData);
   divCard.appendChild(document.createElement("hr"));
 
@@ -62,7 +62,7 @@ const mountCard = (data, index ) => {
   fieldName.innerText = "Pages: ";
   spanData = document.createElement("span");
   spanData.appendChild(fieldName);
-  spanData.append(data.pages);
+  spanData.append(data.getPages());
   divCard.appendChild(spanData);
   divCard.appendChild(document.createElement("hr"));
 
@@ -71,7 +71,7 @@ const mountCard = (data, index ) => {
   spanData = document.createElement("span");
   spanData.id=`edit#${idx}`; 
   spanData.appendChild(fieldName);
-  spanData.append(data.isRead ? `Yes 😸` : `No 😿`);
+  spanData.append(data.getIsRead() == 'true'  ? `Yes 😸` : `No 😿`);
   divCard.appendChild(spanData);
   divCard.appendChild(document.createElement("hr"));
 
@@ -101,13 +101,13 @@ const mountCard = (data, index ) => {
 }
 
 const set_no_books_msg = () => {
-  no_books_msg.style.display = (library.books.length == 0) ? "inline" : "none";
+  no_books_msg.style.display = (library.getBooks().length == 0) ? "inline" : "none";
 }
 
 const count_Books = () => {
   document
   .getElementById('books_total')
-  .innerText = `Books total: ${library.books.length}`
+  .innerText = `Books Total: ${library.getBooks().length}`
 
   document
   .getElementById('books_read')
