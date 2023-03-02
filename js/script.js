@@ -1,9 +1,8 @@
-import Library from './Library.js';
+import Library from './Library/Library.js';
 
-const library = new Library();
+const library = new Library(localStorage);
 
 const no_books_msg = document.getElementById("no_books_msg");
-
 
 const updateBook = (index) => {
   if (document.getElementById("myForm").style.display == "flex") {

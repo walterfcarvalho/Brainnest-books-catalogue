@@ -13,6 +13,7 @@ export default class Book {
     this.isRead = book.isRead;
   }
   
+  toString = () => `id:${this.getId()} title:${this.getTitle()} pages:${this.getPages()} author:${this.getAuthor()} isRead: ${this.getIsRead()}`
   getId = () => this.id;
   setId = (id) => this.id = id;
   getTitle = () => this.title;
@@ -22,6 +23,6 @@ export default class Book {
   getAuthor = () => this.author;
   setAuthor = (author) => this.author = author;
   getIsRead = () => this.isRead;
-  setIsRead = (isRead) => this.isRead;
+  setIsRead = (isRead) => this.isRead = isRead;
   toogleRead = () => this.isRead = !this.isRead;
 } 

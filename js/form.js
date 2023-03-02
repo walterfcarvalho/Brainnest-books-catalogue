@@ -1,5 +1,5 @@
 import * as script from './script.js';
-import Book from './Book.js'
+import Book from './Book/Book.js'
 
 const myForm = document.getElementById("myForm");
 const filTitle = document.getElementById("title");
