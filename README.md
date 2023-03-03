@@ -1,3 +1,7 @@
+
+Tests: https://github.com/walterfcarvalho/brainnest-Javascrip-classes/edit/actions/workflows/test.yml/badge.svg
+
+
 #Brainnest-JavaScript
 
 This project is part of my bootcamp in Brainnest School.
