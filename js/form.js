@@ -74,7 +74,6 @@ const check_title = () => {
     filTitle,
     spanTitle,
     filTitle.value.length >=2,
-    ///^(?=.{3,50}$)^[a-zA-Z0-9.!#$%&'*+/=?^_ `{|}~-]*$/,
     'Inform a title with at least 2 chars '
   );
 }
@@ -84,7 +83,6 @@ const check_author = () => {
     filAuthor,
     spanAuthor,
     filAuthor.value.length >=2,
-    // /^(?=.{3,50}$)^[a-zA-Z0-9.!#$%&'*+/=?^_ `{|}~-]*$/,
     'Inform a author with at least 2 chars '
   );
 }

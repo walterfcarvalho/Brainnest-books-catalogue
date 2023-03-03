@@ -1,15 +1,10 @@
-/*
-* For a detailed explanation regarding each configuration property, visit:
-* https://jestjs.io/docs/configuration
- */
 
 
 module.exports = {
-
-   warningOnDeprecated:false
+  // presets: [['@babel/preset-env', {targets: {node: 'current'}}]]
+  errorOnDeprecated:false
   ,resetMocks: false
   ,setupFiles: ["jest-localstorage-mock"]
-  
   ,setupFilesAfterEnv : ["jest-json"]
   
   /*

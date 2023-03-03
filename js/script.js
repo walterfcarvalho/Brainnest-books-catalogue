@@ -24,9 +24,8 @@ const removeFromList = (index) => {
     return;
   }
 
-  library.books = library.books.filter( book => book.id !== index );
-  library.persist();
-
+  library.remove(index);
+  
   document.getElementById(`delete#${index}`).remove();
   set_no_books_msg();
   count_Books();
