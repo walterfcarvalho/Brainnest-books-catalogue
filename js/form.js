@@ -1,5 +1,5 @@
 import * as script from './script.js';
-import Book from './Book.js'
+import Book from './Book/Book.js'
 
 const myForm = document.getElementById("myForm");
 const filTitle = document.getElementById("title");
@@ -74,7 +74,6 @@ const check_title = () => {
     filTitle,
     spanTitle,
     filTitle.value.length >=2,
-    ///^(?=.{3,50}$)^[a-zA-Z0-9.!#$%&'*+/=?^_ `{|}~-]*$/,
     'Inform a title with at least 2 chars '
   );
 }
@@ -84,7 +83,6 @@ const check_author = () => {
     filAuthor,
     spanAuthor,
     filAuthor.value.length >=2,
-    // /^(?=.{3,50}$)^[a-zA-Z0-9.!#$%&'*+/=?^_ `{|}~-]*$/,
     'Inform a author with at least 2 chars '
   );
 }

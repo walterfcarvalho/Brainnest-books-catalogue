@@ -5,11 +5,30 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Jest",
+      "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+      "request": "launch",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "node"
+    },
+    {
+      "name": "Launch Program",
+      "program": "${workspaceFolder}/js/cipher.js",
+      "request": "launch",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "node"
+    },
+    {
       "name": "browse",
       "request": "launch",
       "type": "chrome",
       "url": "http://localhost:5500/index.html",
       "webRoot": "${workspaceFolder}"
     }
+
   ]
 }

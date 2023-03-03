@@ -1,9 +1,8 @@
-import Library from './Library.js';
+import Library from './Library/Library.js';
 
-const library = new Library();
+const library = new Library(localStorage);
 
 const no_books_msg = document.getElementById("no_books_msg");
-
 
 const updateBook = (index) => {
   if (document.getElementById("myForm").style.display == "flex") {
@@ -25,9 +24,8 @@ const removeFromList = (index) => {
     return;
   }
 
-  library.books = library.books.filter( book => book.id !== index );
-  library.persist();
-
+  library.remove(index);
+  
   document.getElementById(`delete#${index}`).remove();
   set_no_books_msg();
   count_Books();
