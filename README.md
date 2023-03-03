@@ -1,5 +1,5 @@
 
-Tests: https://github.com/walterfcarvalho/brainnest-Javascrip-classes/edit/actions/workflows/test.yml/badge.svg
+Tests: ![example event parameter] (https://github.com/walterfcarvalho/brainnest-Javascrip-classes/edit/actions/workflows/test.yml/badge.svg)
 
 
 #Brainnest-JavaScript
