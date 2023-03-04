@@ -4,7 +4,7 @@ export default class Capitalize {
   }
 
   capitalize = () => {
-    return this.str ? this.str[0].toUpperCase().concat( this.str.slice(1)): "";
+    return this.str ? this.str[0].toUpperCase().concat( this.str.slice(1).toLowerCase()): "";
   }
 
 }

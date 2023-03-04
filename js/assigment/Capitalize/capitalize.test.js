@@ -7,7 +7,12 @@ describe('Capitalize Test', () => {
     expect(msg.capitalize()). toBe('A sample text');
   });
   
-  test('Test receive empty', () => {
+  test('Test receive the all in uppercase, return capitalized ', () => {
+    let msg2 = new Capitalize('SAMPLE text');
+    expect(msg2.capitalize()). toBe('Sample text');
+  });
+  
+  test('Test receive empty, return empty', () => {
       let msg = new Capitalize('');
       expect(msg.capitalize()). toBe('');
   });
