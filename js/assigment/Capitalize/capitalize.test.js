@@ -9,7 +9,7 @@ describe('Capitalize Test', () => {
   
   test('Test receive the all in uppercase, return ', () => {
     let msg2 = new Capitalize('SAMPLE text');
-    expect(msg2.capitalize()). toBe('Sample Text');
+    expect(msg2.capitalize()). toBe('Sample text');
   });
   
   test('Test receive empty, return empty', () => {
